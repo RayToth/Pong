@@ -8,14 +8,12 @@ public class Ball : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    private Vector2 startVelocity;
     private Vector3 startPosition;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        startVelocity = GetRandomDirection() * moveSpeed;
         startPosition = gameObject.transform.position;
     }
 
