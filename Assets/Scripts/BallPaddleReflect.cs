@@ -1,0 +1,38 @@
+using UnityEngine;
+
+public class BallPaddleReflect : MonoBehaviour
+{
+    public float maxBounceAngle = 60f;
+    public float ballSpeed = 10f;
+
+    private Rigidbody2D rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.CompareTag("PlayerOne") &&
+            !collision.gameObject.CompareTag("PlayerTwo")) return;
+
+        // Get paddle info
+        float paddleY = collision.transform.position.y;
+        float paddleHeight = collision.collider.bounds.size.y;
+
+        // Calculate offset: -1 (bottom) to +1 (top)
+        float hitOffset = (transform.position.y - paddleY) / (paddleHeight / 2f);
+        hitOffset = Mathf.Clamp(hitOffset, -1f, 1f);
+
+        // Determine horizontal direction (bounce away from paddle)
+        float xDirection = transform.position.x < 0 ? 1f : -1f;
+
+        // Calculate bounce angle
+        float bounceAngle = hitOffset * maxBounceAngle;
+        float angleRad = bounceAngle * Mathf.Deg2Rad;
+
+        Vector2 newDir = new Vector2(xDirection * Mathf.Cos(angleRad), Mathf.Sin(angleRad)).normalized;
+        rb.velocity = newDir * ballSpeed;
+    }
+}
