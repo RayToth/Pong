@@ -591,9 +591,13 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PlayerOne
       objectReference: {fileID: 0}
+    - target: {fileID: 3971504018519181927, guid: 4d73cb26a828bf04ebe2ed00bfc034c8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7713000671372008471, guid: 4d73cb26a828bf04ebe2ed00bfc034c8, type: 3}
       propertyPath: m_BodyType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7713000671372008471, guid: 4d73cb26a828bf04ebe2ed00bfc034c8, type: 3}
       propertyPath: m_GravityScale
@@ -705,9 +709,13 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PlayerTwo
       objectReference: {fileID: 0}
+    - target: {fileID: 3971504018519181927, guid: 4d73cb26a828bf04ebe2ed00bfc034c8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7713000671372008471, guid: 4d73cb26a828bf04ebe2ed00bfc034c8, type: 3}
       propertyPath: m_BodyType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7713000671372008471, guid: 4d73cb26a828bf04ebe2ed00bfc034c8, type: 3}
       propertyPath: m_GravityScale

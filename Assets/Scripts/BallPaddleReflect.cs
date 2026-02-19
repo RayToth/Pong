@@ -12,14 +12,14 @@ public class BallPaddleReflect : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!collision.gameObject.CompareTag("PlayerOne") &&
-            !collision.gameObject.CompareTag("PlayerTwo")) return;
+        if (!other.gameObject.CompareTag("PlayerOne") &&
+            !other.gameObject.CompareTag("PlayerTwo")) return;
 
         // Get paddle info
-        float paddleY = collision.transform.position.y;
-        float paddleHeight = collision.collider.bounds.size.y;
+        float paddleY = other.transform.position.y;
+        float paddleHeight = other.bounds.size.y;
 
         // Calculate offset: -1 (bottom) to +1 (top)
         float hitOffset = (transform.position.y - paddleY) / (paddleHeight / 2f);

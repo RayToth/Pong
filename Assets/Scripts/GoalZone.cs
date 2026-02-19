@@ -6,9 +6,9 @@ public class GoalZone : MonoBehaviour
 {
     [SerializeField] private int scoringPlayerIndex;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.CompareTag("Ball"))
+        if (other.CompareTag("Ball"))
         {
             GameManager.Instance.AddScore(scoringPlayerIndex);
         }
