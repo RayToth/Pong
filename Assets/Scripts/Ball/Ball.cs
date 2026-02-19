@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] private float baseMoveSpeed = 5f;
+    [SerializeField] private float baseSpeed = 5f;
 
     private Rigidbody2D rb;
 
@@ -46,7 +46,7 @@ public class Ball : MonoBehaviour
     }
     public void PushBall()
     {
-        rb.velocity = GetRandomDirection() * baseMoveSpeed;
+        rb.velocity = GetRandomDirection() * baseSpeed;
     }
 
     private void ResetPosition()
