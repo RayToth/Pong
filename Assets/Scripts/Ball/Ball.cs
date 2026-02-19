@@ -13,19 +13,20 @@ public class Ball : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        startPosition = gameObject.transform.position;
     }
 
     private void Start()
     {
+        startPosition = gameObject.transform.position;
         PushBall();
         GameManager.Instance.OnRoundReset += OnNewRound;
+        GameManager.Instance.OnReplay += OnNewRound;
     }
 
     private void OnDisable()
     {
         GameManager.Instance.OnRoundReset -= OnNewRound;
+        GameManager.Instance.OnReplay -= OnNewRound;
     }
 
     private Vector2 GetRandomDirection()

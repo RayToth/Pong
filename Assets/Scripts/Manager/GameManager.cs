@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public event Action OnScoreChanged;
     public event Action OnGameOver;
     public event Action OnRoundReset;
+    public event Action OnReplay;
 
     private void Awake()
     {
@@ -58,5 +59,12 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         OnGameOver?.Invoke();
+    }
+
+    public void Replay()
+    {
+        ResetScores();
+        OnScoreChanged?.Invoke();
+        OnReplay?.Invoke();
     }
 }
