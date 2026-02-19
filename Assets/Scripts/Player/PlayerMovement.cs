@@ -7,9 +7,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float baseMoveSpeed = 5f;
     [SerializeField] private float minY = -4f;
     [SerializeField] private float maxY = 4f;
+    [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
+    [SerializeField] private float sprintMultiplier = 1.5f;
     [HideInInspector] public float moveSpeedMultiplier = 1f;
 
     private Player player;
+
 
     private void Awake()
     {
@@ -37,7 +40,10 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.DownArrow)) moveDirection -= 1f;
         }
 
-        player.rb.velocity = new Vector2(0, moveDirection * baseMoveSpeed * moveSpeedMultiplier);
+        float currentSpeed = baseMoveSpeed * moveSpeedMultiplier;
+        if (Input.GetKey(sprintKey)) currentSpeed *= sprintMultiplier;
+
+        player.rb.velocity = new Vector2(0, moveDirection * currentSpeed);
 
         float clampedY = Mathf.Clamp(transform.position.y, minY, maxY);
         transform.position = new Vector3(transform.position.x, clampedY, transform.position.z);
