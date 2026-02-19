@@ -31,18 +31,13 @@ public class Ball : MonoBehaviour
 
     private Vector2 GetRandomDirection()
     {
-        Vector2 direction = new Vector2(
-            Random.Range(-1f, 1f),
-            Random.Range(-1f, 1f)
-        );
+        float maxAngle = 30f;
+        float angle = Random.Range(-maxAngle, maxAngle);
+        float angleRad = angle * Mathf.Rad2Deg;
 
-        // If both values are 0, then set direction to [1, 1]
-        if (direction.magnitude < 0.1f)
-        {
-            direction = Vector2.one;
-        }
+        float xDirection = Random.value > 0.5f ? 1f : -1f;
 
-        return direction.normalized;
+        return new Vector2(xDirection * Mathf.Cos(angleRad), Mathf.Sin(angleRad)).normalized;
     }
     public void PushBall()
     {
