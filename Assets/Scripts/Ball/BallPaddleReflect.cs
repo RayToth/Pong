@@ -3,13 +3,15 @@ using UnityEngine;
 public class BallPaddleReflect : MonoBehaviour
 {
     public float maxBounceAngle = 60f;
-    public float ballSpeed = 10f;
+    public float speedIncrease = 0.5f;
 
     private Rigidbody2D rb;
+    private Ball ball;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        ball = GetComponent<Ball>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -33,6 +35,7 @@ public class BallPaddleReflect : MonoBehaviour
         float angleRad = bounceAngle * Mathf.Deg2Rad;
 
         Vector2 newDir = new Vector2(xDirection * Mathf.Cos(angleRad), Mathf.Sin(angleRad)).normalized;
-        rb.velocity = newDir * ballSpeed;
+
+        ball.OnPaddleHit(newDir, speedIncrease);
     }
 }

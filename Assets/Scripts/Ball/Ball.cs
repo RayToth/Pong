@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     [SerializeField] private float baseSpeed = 5f;
+    private float currentSpeed;
 
     private Rigidbody2D rb;
 
@@ -41,7 +42,15 @@ public class Ball : MonoBehaviour
     }
     public void PushBall()
     {
-        rb.velocity = GetRandomDirection() * baseSpeed;
+        currentSpeed = baseSpeed;
+        rb.velocity = GetRandomDirection() * currentSpeed;
+    }
+
+    public void OnPaddleHit(Vector2 newDirection, float speedIncrease)
+    {
+        currentSpeed += speedIncrease;
+        rb.velocity = newDirection * currentSpeed;
+        Debug.Log(currentSpeed);
     }
 
     private void ResetPosition()
