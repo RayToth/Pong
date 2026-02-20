@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float baseMoveSpeed = 5f;
-    [SerializeField] private float minY = -4f;
-    [SerializeField] private float maxY = 4f;
+    [SerializeField] private float minY = -4.2f;
+    [SerializeField] private float maxY = 4.2f;
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
     [SerializeField] private float sprintMultiplier = 1.5f;
     [HideInInspector] public float moveSpeedMultiplier = 1f;

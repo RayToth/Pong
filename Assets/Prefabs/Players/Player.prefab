@@ -186,6 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMoveSpeed: 5
-  minY: -4
-  maxY: 4
+  minY: -4.2
+  maxY: 4.2
+  sprintKey: 304
+  sprintMultiplier: 1.5
   moveSpeedMultiplier: 1
