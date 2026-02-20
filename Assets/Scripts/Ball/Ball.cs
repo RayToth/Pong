@@ -50,7 +50,6 @@ public class Ball : MonoBehaviour
     {
         currentSpeed += speedIncrease;
         rb.velocity = newDirection * currentSpeed;
-        Debug.Log(currentSpeed);
     }
 
     private void ResetPosition()
