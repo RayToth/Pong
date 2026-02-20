@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public ParticleSystem hitEffectPrefab;
+
     [SerializeField] private float baseSpeed = 5f;
+
     private float currentSpeed;
-
     private Rigidbody2D rb;
-
     private Vector3 startPosition;
 
     private void Awake()
@@ -28,6 +29,24 @@ public class Ball : MonoBehaviour
     {
         GameManager.Instance.OnRoundReset -= OnNewRound;
         GameManager.Instance.OnReplay -= OnNewRound;
+    }
+
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("PlayerOne") || col.gameObject.CompareTag("PlayerTwo"))
+        {
+            ParticleSystem effect = Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+            var vel = effect.velocityOverLifetime;
+            vel.enabled = true;
+            vel.x = (col.CompareTag("PlayerOne")) ? 2f : -2f;
+            vel.y = 0f;
+            effect.Play();
+            Destroy(effect.gameObject, effect.main.duration + effect.main.startLifetime.constantMax);
+
+            var main = effect.main;
+            main.startRotation = (col.CompareTag("PlayerOne")) ? Mathf.PI / 2 : -Mathf.PI / 2;
+        }
     }
 
     private Vector2 GetRandomDirection()
