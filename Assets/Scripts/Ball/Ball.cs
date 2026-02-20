@@ -34,7 +34,7 @@ public class Ball : MonoBehaviour
     {
         float maxAngle = 30f;
         float angle = Random.Range(-maxAngle, maxAngle);
-        float angleRad = angle * Mathf.Rad2Deg;
+        float angleRad = angle * Mathf.Deg2Rad;
 
         float xDirection = Random.value > 0.5f ? 1f : -1f;
 
